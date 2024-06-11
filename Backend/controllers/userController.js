@@ -63,3 +63,11 @@ export const logout = catchAsyncError(async(req,res,next)=>{
         message:"user logout successfully!"
     })
 }) 
+
+export const getUser = catchAsyncError((req,res,next)=>{
+    const user = req.user;
+    req.status(200).json({
+        success:true,
+        user,
+    })
+})
