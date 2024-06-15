@@ -15,7 +15,7 @@ import Postjob from './components/Job/Postjob.jsx'
 import NotFound from './components/Notfound/NotFound.jsx'
 import axios from 'axios'
 import { Toaster } from 'react-hot-toast';
-import {Context} from './main.jsx'
+import { Context } from './main.jsx'
 
 const App = () => {
   const { isAuthorized, setIsAuthorized, setUser } = useContext(Context)
@@ -23,7 +23,8 @@ const App = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get("", { withCredentials: true });
+        const response = await axios.get("http://localhost:4000/api/v1/user/getuser", { withCredentials: true });
+
         setUser(response.data.user);
         setIsAuthorized(true);
       } catch (error) {
@@ -38,16 +39,16 @@ const App = () => {
       <Router>
         <Header />
         <Routes>
-          <Route path='/login' element={<Login/>} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/" element={<Home/>} />
-          <Route path="/job/getall" element={<Job/>} />
-          <Route path="/job/:id" element={<JobDetail/>} />
-          <Route path="/job/post" element={<Postjob/>} />
-          <Route path="/job/me" element={<MyJobs/>} />
-          <Route path="/application/:id" element={<Application/>} />
-          <Route path="/application/me" element={<MyApplication/>} />
-          <Route path="*" element={<NotFound/>} />
+          <Route path='/login' element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/job/getall" element={<Job />} />
+          <Route path="/job/:id" element={<JobDetail />} />
+          <Route path="/job/post" element={<Postjob />} />
+          <Route path="/job/me" element={<MyJobs />} />
+          <Route path="/application/:id" element={<Application />} />
+          <Route path="/application/me" element={<MyApplication />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
         <Toaster />

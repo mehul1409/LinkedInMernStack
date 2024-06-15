@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom'
 const NotFound = () => {
   return (
     <>
-      <h1>Page not found!</h1>
-      <Link to={'/'}>Return to home</Link>
+      <section className="notFound">
+        <div className="content">
+          <img src="" alt="" />
+          <Link to='/'>Return To Home</Link>
+        </div>
+      </section>
     </>
   )
 }

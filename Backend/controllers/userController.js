@@ -54,20 +54,20 @@ export const login = catchAsyncError(async (req, res, next) => {
     sendToken(user, 200, res, "user logged in successfully!");
 });
 
-export const logout = catchAsyncError(async(req,res,next)=>{
-    res.status(201).cookie("token",null,{
-        httpOnly:true,
+export const logout = catchAsyncError(async (req, res, next) => {
+    res.status(201).cookie("token", null, {
+        httpOnly: true,
         expires: new Date(Date.now())
     }).json({
-        success:true,
-        message:"user logout successfully!"
+        success: true,
+        message: "user logout successfully!"
     })
-}) 
+})
 
-export const getUser = catchAsyncError((req,res,next)=>{
+export const getUser = catchAsyncError((req, res, next) => {
     const user = req.user;
-    req.status(200).json({
-        success:true,
+    res.status(200).json({
+        success: true,
         user,
     })
 })
